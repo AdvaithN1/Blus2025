@@ -48,9 +48,128 @@
     url("https://db.onlinewebfonts.com/t/feab4f015f183ad38338781e0369490d.svg#DINOT-Bold")format("svg");
 }
 
-/*     */
+html, body {
+  height: 100%;
+  margin: 0; 
+}
 
 body{
-    background:#a6def4;
-    background: linear-gradient(to right, #d3e8f0, #eafaff);
+  background-color: #1e282c;
+  background: linear-gradient(to bottom, #192124, #12181a);
+}
+
+h1 {
+  font-family: "DINOT-Bold";
+  font-size: 24px;
+  color: #D2DFE3;
+  margin-top: 24px;
+}
+
+#return {
+  font-family: "DINOT-Bold";
+  font-size: 16px;
+  color: #5089e6;
+  margin-top: 60px;
+}
+
+#thingy {
+  font-family: "DINOT-Bold";
+  font-size: 16px;
+  color: #D2DFE3;
+}
+
+#inpId {
+  width: 100px;
+  height: 15px; 
+  border-radius: 20px; 
+  border: none;
+  padding: 10px; 
+  font-family: "DINOT-Regular";
+  font-size: 12px;
+  background-color: #3D5154;
+  color: white;
+  outline: none;
+}
+
+#inpId::placeholder {
+  color: #91b8c2;
+}
+
+#inpPass {
+  width: 100px;
+  height: 15px; 
+  border-radius: 20px; 
+  border: none;
+  padding: 10px; 
+  font-family: "DINOT-Regular";
+  font-size: 12px;
+  background-color: #3D5154;
+  color: white;
+  outline: none;
+}
+
+#inpPass::placeholder {
+  color: #91b8c2;
+}
+
+#addChanBtn {
+  width: 100px;
+  height: 40px; 
+  border-radius: 20px;
+  border: none;
+  padding: 10px; 
+  font-family: "DINOT-Regular";
+  font-size: 12px;
+  background-color: #3D5154;
+  color: white;
+  outline: none;
+}
+
+#addChanBtn:active {
+  background-color: #91b8c2;
+}
+
+
+#inpChanDel {
+  width: 100px;
+  height: 15px; 
+  border-radius: 20px; 
+  border: none;
+  padding: 10px; 
+  font-family: "DINOT-Regular";
+  font-size: 12px;
+  background-color: #3D5154;
+  color: white;
+  outline: none;
+}
+
+#inpChanDel::placeholder {
+  color: #91b8c2;
+}
+
+#delChan {
+  width: 100px;
+  height: 40px; 
+  border-radius: 20px;
+  border: none;
+  padding: 10px; 
+  font-family: "DINOT-Regular";
+  font-size: 12px;
+  background-color: #3D5154;
+  color: white;
+  outline: none;
+  transform: translateY(13px);
+}
+
+#delChan:active {
+  background-color: #91b8c2;
+}
+
+img {
+  border-radius: 100%;
+  border-color: #fff;
+  border: 5px solid;
+  position: fixed;
+  top: 30px;
+  right: 5%;
 }
