@@ -97,8 +97,8 @@ h2 {
     border: 7px solid #3D5154;
     border-radius: 10px;
     background-color: #1E282C;
-    width: calc(100% - 25px); /* Adjust video area width */
-    float: left; /* Make video area float left */
+    width: calc(100% - 25px); 
+    float: left; 
 }
 
 .video-player{
@@ -205,7 +205,7 @@ button {
     transition: background-color 0.2s, background-image 0.2s ease-out;
 }
 
-#save-btn {
+#sendimg-btn {
     display: none;
     background-image: url('/assets/transferimg.png');
     background-size: cover;
@@ -218,6 +218,17 @@ button {
 
 #transfer-btn {
     background-image: url('/assets/transfer.png');
+    background-size: cover;
+    background-position: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    transition: background-color 0.2s, background-image 0.2s ease-out;
+}
+
+#save-btn {
+    display: none;
+    background-image: url('/assets/save.png');
     background-size: cover;
     background-position: center;
     width: 70px;
@@ -248,11 +259,21 @@ button {
 }
 
 #custom-upload-btn:hover {
-    background-color: #5b7579; /* Change color on hover */
+    background-color: #5b7579;
 }
 
 #upload-btn {
     display: none;
+}
+
+#capture-btn {
+    background-image: url('/assets/capture.png');
+    background-size: cover;
+    background-position: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    transition: background-color 0.2s, background-image 0.2s ease-out;
 }
 
 
@@ -266,8 +287,8 @@ button {
 }
 
 #stream-wrapper {
-    width: 80%; /* Adjust video area width */
-    float: left; /* Make video area float left */
+    width: 80%;
+    float: left; 
 }
 
 
@@ -301,12 +322,12 @@ button {
 
   }
   .capContainer2 {
-    overflow-y: auto; /* Vertical scrollbar */
-    overflow-x: auto; /* Horizontal scrollbar only when needed */
+    overflow-y: auto; 
+    overflow-x: auto; 
     max-height: 93%;
     display: flex;
-    flex-direction: column; /* Ensure vertical stacking */
-    word-wrap: break-word; /* Wrap long words */
+    flex-direction: column; 
+    word-wrap: break-word;
     }
 
     .scroll-lock {

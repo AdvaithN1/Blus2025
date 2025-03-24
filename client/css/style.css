@@ -49,11 +49,11 @@ body {
   z-index: -1;
   position: absolute;
   width: 100%;
-  height: 300%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #1e282c;
-  background: linear-gradient(to bottom, #192124, #12181a);
+  background-color: #12181a;
+  /*background: linear-gradient(to bottom, #192124, #12181a);*/
 }
 /*
 .circle-cursor {
@@ -73,7 +73,7 @@ body {
 h1 {
   font-family: "URW Jay Gothic W01 Light";
   font-size: 160px;
-  color: #D2DFE3;
+  color: #ffffff;
   text-align: center;
   position: absolute;
   top: 30px;
@@ -81,9 +81,11 @@ h1 {
 
 h2 {
   font-family: "URW Jay Gothic W01 Light";
-  font-size: 24px;
-  color: #D2DFE3;
-  text-align: left;
+  font-size: 40px;
+  color: #95b2ba;
+  text-align: center;
+  position: absolute;
+  top: 220px;
 }
 
 #meetingID {
@@ -112,8 +114,14 @@ h2 {
 #meetingID:focus {
   outline: none;
   width: 33%;
-  cursor: hidden;
+  color: #fff;
+  border-color: #fff;
 }
+
+#meetingID:focus::placeholder {
+  color: #fff;
+}
+
 
 #username {
   position: absolute;
@@ -141,7 +149,12 @@ h2 {
 #username:focus {
   outline: none;
   width: 33%;
-  cursor: hidden;
+  color: #fff;
+  border-color: #fff;
+}
+
+#username:focus::placeholder {
+  color: #fff;
 }
 
 #txt {
@@ -159,23 +172,26 @@ h2 {
 #btn {
   font-family: "hatch-sans", sans-serif;
   font-size: 24px;
-  background-color: #0000ff;
-  color: black;
+  background-color: transparent;
+  border: white 5px solid;
+  border-color: white;
+  color: #fff;
   position: absolute;
   top: 330px;
   margin-left: 60%;
   text-align: center;
-  width: 160px;
+  width: 180px;
   height: 60px;
 
   border-radius: 20px;
   padding: 0;
-  border: none;
   transition: background-color 0.3s ease-in-out;
 }
 
 #btn:hover {
-  background-color: #fff;
+  border-color: #ffffff;
+  color: #000000;
+  background-color: white;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -189,18 +205,57 @@ h2 {
   color: white;
   position: fixed;
   top: 50px;
-  margin-left: 90%;
+  margin-left: 85%;
   text-align: center;
   width: 160px;
   height: 60px;
 
   border-radius: 20px;
   padding: 0;
-  transition: border-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
 #dashboardBtn:hover {
-  border-color: #7d7d7d;
-  color: #7d7d7d;
-  transition: border-color 0.3s ease-in-out;
+  border-color: #ffffff;
+  color: #000000;
+  background-color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#signoutlink {
+  position: absolute;
+  width: 200px;
+  left: 10%;
+  top: 100px;
+  z-index: 1000;
+}
+
+#signoutlink {
+  font-family: "hatch-sans", sans-serif;
+  font-size: 24px;
+  background-color: transparent;
+  border: blue 5px solid;
+  border-color: blue;
+  color: blue;
+  position: fixed;
+  width: 160px;
+  height: 60px;
+  margin-left: -5%;
+  top: 50px;
+  text-align: center;
+
+  border-radius: 20px;
+  padding: 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#signoutlink:hover {
+  border-color: blue;
+  color: #000000;
+  background-color: blue;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#loginbtnstuff {
+  display: none;
 }

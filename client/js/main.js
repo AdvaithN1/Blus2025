@@ -1,3 +1,4 @@
+// ACTUAL MAIN.JS STARTS HERE
 let APP_ID = ""
 
 let runningMode = "VIDEO";
@@ -35,6 +36,14 @@ fifthExternalWhiteboardHalf = ""
 sixthExternalWhiteboardHalf = ""
 seventhExternalWhiteboardHalf = ""
 eighthExternalWhiteboardHalf = ""
+
+secondExternalPicHalf = ""
+thirdExternalPicHalf = ""
+fourthExternalPicHalf = ""
+fifthExternalPicHalf = ""
+sixthExternalPicHalf = ""
+seventhExternalPicHalf = ""
+eighthExternalPicHalf = ""
 
 let username = "";
 let unid = "";
@@ -404,9 +413,42 @@ let joinAndDisplayLocalStream = async (meetingId, token, rtmtoken) => {
          console.error("SENDER ID: "+senderName)
 
         splitted = text.trim().split(" ");
+
+        //FOR SENDING USER PICTURE
+        if(splitted[0] === "PicSecondEighth"){
+            secondExternalPicHalf = splitted[1]
+        }
+        if(splitted[0] === "PicThirdEighth"){
+            thirdExternalPicHalf = splitted[1]
+        }
+        if(splitted[0] === "PicFourthEighth"){
+            fourthExternalPicHalf = splitted[1]
+        }
+        if(splitted[0] === "PicFifthEighth"){
+            fifthExternalPicHalf = splitted[1]
+        }
+        if(splitted[0] === "PicSixthEighth"){
+            sixthExternalPicHalf = splitted[1]
+        }
+        if(splitted[0] === "PicSeventhEighth"){
+            seventhExternalPicHalf = splitted[1]
+        }
+        if(splitted[0] === "PicEighthEighth"){
+            eighthExternalPicHalf = splitted[1]
+        }
+        if(splitted[0] === "SELFPIC" && splitted[splitted.length-1].substring(0, 10) === "data:image"){
+            newName = splitted.slice(1, splitted.length-1).join(" ");
+            linky = splitted[splitted.length-1]
+            linky = linky+secondExternalPicHalf+thirdExternalPicHalf+fourthExternalPicHalf+fifthExternalPicHalf+sixthExternalPicHalf+seventhExternalPicHalf+eighthExternalPicHalf
+            addToastWithPic("New Picture Received from "+newName, "", linky);
+            return
+        }
+
+         //FOR SENDING SECRETS
         if(splitted[0] === "SECRETSENDING"){
             addToastWithCode("Code Received from "+newName, "Hover to view", splitted.slice(1, splitted.length).join(" "))
         }
+        // FOR SENDING WHITEBOARD
         if(splitted[0] === "SecondEighth"){
             secondExternalWhiteboardHalf = splitted[1]
             return
@@ -435,7 +477,7 @@ let joinAndDisplayLocalStream = async (meetingId, token, rtmtoken) => {
             eighthExternalWhiteboardHalf = splitted[1]
             return
         }
-
+        
         if(splitted[splitted.length-1].substring(0, 10) === "data:image")
         {
             console.error("RECEIVED FRAME!!!!!!!!!!!!!!!!!!!!!: ")
@@ -443,7 +485,7 @@ let joinAndDisplayLocalStream = async (meetingId, token, rtmtoken) => {
             console.error(link+secondExternalWhiteboardHalf+thirdExternalWhiteboardHalf+fourthExternalWhiteboardHalf+fifthExternalWhiteboardHalf+sixthExternalWhiteboardHalf+seventhExternalWhiteboardHalf+eighthExternalWhiteboardHalf)
             // Remove last element and combine
             nameWithoutLink = splitted.slice(0, splitted.length-1).join(" ");
-            addToastWithLink(nameWithoutLink+" has sent an image!", "", link+secondExternalWhiteboardHalf+thirdExternalWhiteboardHalf+fourthExternalWhiteboardHalf+fifthExternalWhiteboardHalf+sixthExternalWhiteboardHalf+seventhExternalWhiteboardHalf+eighthExternalWhiteboardHalf);
+            addToastWithLink(nameWithoutLink+" has sent an document!", "", link+secondExternalWhiteboardHalf+thirdExternalWhiteboardHalf+fourthExternalWhiteboardHalf+fifthExternalWhiteboardHalf+sixthExternalWhiteboardHalf+seventhExternalWhiteboardHalf+eighthExternalWhiteboardHalf);
             flags[senderId].push(text.trim());
             console.error("ALL FLAGS: "+flags)
             return
@@ -968,8 +1010,9 @@ let toggleWhiteboard = async (e) => {
         
         document.getElementById('whiteboard').style.display = 'none';
         document.getElementById('erase-btn').style.display = 'none';
-        document.getElementById('save-btn').style.display = 'none';
+        document.getElementById('sendimg-btn').style.display = 'none';
         document.getElementById('custom-upload-btn').style.display = 'none';
+        document.getElementById('save-btn').style.display = 'none';
     }
     else{
         whiteboardOpen = true;
@@ -984,8 +1027,9 @@ let toggleWhiteboard = async (e) => {
         e.target.style.backgroundImage = 'url("/assets/wboff.png")'
 
         document.getElementById('erase-btn').style.display = 'flex';
-        document.getElementById('save-btn').style.display = 'flex';
+        document.getElementById('sendimg-btn').style.display = 'flex';
         document.getElementById('custom-upload-btn').style.display = 'flex';
+        document.getElementById('save-btn').style.display = 'flex';
 
         let whiteboard = `<div class="video-container" id="whiteboard">
         <canvas id="whiteboard-canvas" class="video-player white"></canvas>
@@ -1126,20 +1170,49 @@ let toggleErase = async (e) => {
 
 
 
-// function downloadURI(uri, name) {
-//     var link = document.createElement("a");
-//     link.download = name;
-//     link.href = uri;
-//     document.body.appendChild(link);
-//     link.click();
-//     document.body.removeChild(link);
-//     link.remove()
-//   }
+function downloadURI(uri, name) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    link.remove()
+  }
 
-// let saveWhiteboard = async (e) => {
-//     // downloadURI(dataUrl, "whiteboard.png");
-//     navigator.clipboard.writeText(dataUrl)
-// }
+let saveWhiteboard = async (e) => {
+    downloadURI(dataUrl, "document.png");
+    navigator.clipboard.writeText(dataUrl)
+}
+
+let sendSelfPic = async (e) => {
+    console.error("SENDING SELF PIC")
+    imgSource = localTracks[1].getCurrentFrameData();
+    await getCompressedDataUrl(imgSource).then((url) => {
+        console.error("FLAGGED FRAME: "+url)
+        firstEighth = url.substring(0, Math.floor(url.length/8))
+        secondEighth = url.substring(Math.floor(url.length/8), 2*Math.floor(url.length/8))
+        thirdEighth = url.substring(2*Math.floor(url.length/8), 3*Math.floor(url.length/8))
+        fourthEighth = url.substring(3*Math.floor(url.length/8), 4*Math.floor(url.length/8))
+        fifthEighth = url.substring(4*Math.floor(url.length/8), 5*Math.floor(url.length/8))
+        sixthEighth = url.substring(5*Math.floor(url.length/8), 6*Math.floor(url.length/8))
+        seventhEighth = url.substring(6*Math.floor(url.length/8), 7*Math.floor(url.length/8))
+        eighthEighth = url.substring(7*Math.floor(url.length/8), url.length)
+
+        updateCaptionsCustom("PicSecondEighth "+secondEighth, display=false)
+        updateCaptionsCustom("PicThirdEighth "+thirdEighth, display=false)
+        updateCaptionsCustom("PicFourthEighth "+fourthEighth, display=false)
+        updateCaptionsCustom("PicFifthEighth "+fifthEighth, display=false)
+        updateCaptionsCustom("PicSixthEighth "+sixthEighth, display=false)
+        updateCaptionsCustom("PicSeventhEighth "+seventhEighth, display=false)
+        updateCaptionsCustom("PicEighthEighth "+eighthEighth, display=false)
+
+        updateCaptionsCustom("SELFPIC "+username+" "+firstEighth) // Use imgSource.toDataURL() for without nodes TODO: UNCOMMENT
+
+        addToastWithPic("Picture Successfully Sent!", "", imgSource.toDataURL());
+    })
+    
+}
 
 
 function drawConnectors(recogCtx, landmarks, options){
@@ -1334,6 +1407,8 @@ async function sendWhiteboardSignatureFrame(){
         updateCaptionsCustom("EighthEighth "+eighthEighth, display=false)
         updateCaptionsCustom(username+" "+firstEighth, display=false)
 
+        addToastWithPic("Document Successfully Sent!", "", url);
+
     })
 
     
@@ -1359,6 +1434,7 @@ async function addImageToWhiteboard(event){
     }
 
     const file = event.target.files[0];
+    event.target.value = ""
     if (file) {
         const reader = new FileReader();
 
@@ -1376,6 +1452,36 @@ async function addImageToWhiteboard(event){
     }
     
 }
+
+async function addBase64ImageToWhiteboard(base64Image) {
+    console.error("ADDING BASE 64 IMAGE TO WHITEBOARD EXTERNAL")
+    if (!whiteboardOpen) {
+        document.getElementById('whiteboard-btn').click();
+        // return;
+    }
+    
+    let canvas, ctx;
+    try {
+        canvas = document.getElementById("whiteboard-canvas");
+        ctx = canvas.getContext("2d");
+    } catch (err) {
+        console.error("ERROR IN RETRIEVING WHITEBOARD: " + err);
+        return;
+    }
+    
+    const img = new Image();
+    img.src = base64Image;
+    
+    img.onload = function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous image
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // Draw image on canvas
+    };
+    
+    img.onerror = function () {
+        console.error("ERROR LOADING IMAGE");
+    };
+}
+
 
 
 //DELETE THIS
@@ -1577,9 +1683,13 @@ document.getElementById('screenshare-btn').addEventListener('click', toggleScree
 
 document.getElementById('whiteboard-btn').addEventListener('click', toggleWhiteboard) 
 document.getElementById('erase-btn').addEventListener('click', toggleErase) 
-document.getElementById('save-btn').addEventListener('click', sendWhiteboardSignatureFrame) 
+document.getElementById('sendimg-btn').addEventListener('click', sendWhiteboardSignatureFrame) 
 document.getElementById('upload-btn').addEventListener('change', addImageToWhiteboard)
+document.getElementById('save-btn').addEventListener('click', saveWhiteboard)
 
 document.getElementById('transfer-btn').addEventListener('click', sendSecretCode)
+
+document.getElementById('capture-btn').addEventListener('click', sendSelfPic)
+
 
 joinStream(meetingId)

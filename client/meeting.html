@@ -18,7 +18,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/videoport.css'>
-    <link rel="icon" type="image/svg+xml" href="/assets/PantheonMEETSfavicon.svg" size="128x128">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
       integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
       crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <title>In a meeting</title>
+    <title>In a Meeting</title>
 
     <!-- Toast container -->
     <div aria-live="polite" aria-atomic="true" style="position: absolute; min-height: 200px; z-index: 99999;">
@@ -83,12 +83,14 @@
             <button id="screenshare-btn"></button>
             <button id="whiteboard-btn"></button>
             <button id="erase-btn"></button>
-            <button id="save-btn"></button> <!-- SEND SIGNATURE -->
-            <button id="transfer-btn"></button> <!-- TRANSFER MONEY -->
+            <button id="sendimg-btn"></button> <!-- SEND SIGNATURE -->
+            
+            <button id="save-btn"></button>
             <label for="upload-btn" id="custom-upload-btn"></label>
             <input type="file" accept="image/*" id="upload-btn"> <!-- OVERLAYS IMAGE -->
             <span id="file-name"></span>
-
+            <button id="transfer-btn"></button> <!-- TRANSFER MONEY -->
+            <button id="capture-btn"></button> <!-- CAPTURE VIDEO -->
             
         </div>
     </div>

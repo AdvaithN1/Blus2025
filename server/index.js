@@ -28,7 +28,7 @@ const email_pass = process.env.EMAIL_PASS;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, { useNewUrlParser: true });
-const mongolink = "mongodb://127.0.0.1:27017" // Originally localhost:27017/32   Use mongodb://meets.pantheonlabs.org:27017/32 for production
+const mongolink = "mongodb://blushacks-2025.vercel.app:27017" // Originally localhost:27017/32   Use mongodb://meets.pantheonlabs.org:27017/32 for production
 
 async function getUserInfo(userId) {
   try {
@@ -65,7 +65,7 @@ async function addUser(userId, username, email, profilepic) {
     return
   }
 
-  var mailtex = 'Hello '+username+',\n\nWelcome to Pantheon Meets, a video calling platform with ASL and multi-lingual support. If you have any questions or concerns, please feel free to reach out to us by replying to this email. \n\nSincerely,\nAdvaith Narayanan\nPantheon Meets\nhttps://meets.pantheonlabs.org'
+  var mailtex = 'Hello '+username+',\n\nWelcome to Pantheon Meets, a video calling platform with ASL and multi-lingual support. If you have any questions or concerns, please feel free to reach out to us by replying to this email. \n\nSincerely,\nAdvaith Narayanan\nPantheon Finance\nhttps://finance.pantheonlabs.org'
 
   let mailOptions = {
     from: adminemail,
@@ -246,7 +246,7 @@ passport.deserializeUser((user, done) => {
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET, // @TODO : CHANGE THIS LINK to 'https://meets.pantheonlabs.org/auth/google/callback'
-  callbackURL: '/auth/google/callback'
+  callbackURL: 'https://blushacks-2025.vercel.app/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
   return done(null, profile);
 }));

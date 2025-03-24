@@ -17,7 +17,7 @@ if (userCookie) {
         document.getElementById('logintxt').innerHTML = 'Login with Google';
         document.getElementById('loginbtnstuff').href = '/auth/google';
     }
-    document.getElementById('usernameInp').value = userData.tempname;
+    document.getElementById('username').value = userData.tempname;
 }
 else{
     document.getElementById('logintxt').innerHTML = 'Login with Google';
@@ -27,7 +27,7 @@ else{
 
 
 
-document.getElementById('join-meeting-btn').addEventListener("click", handler, false);
+document.getElementById('btn').addEventListener("click", handler, false);
 												
 document.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
@@ -36,7 +36,7 @@ document.addEventListener("keypress", function(event) {
 });
 
 function handler(event) {
-    newUsername = document.getElementById("usernameInp").value;
+    newUsername = document.getElementById("username").value;
     if(newUsername == ""){
         return;
     }

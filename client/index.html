@@ -30,7 +30,7 @@
 
     <h1 id="title">Pantheon Finance</h1>'
     
-    <h2 id="logintxt">Sign up or Log in</h2>
+    <h2 id="logintxt"></h2>
 
     <input type="text" id="meetingID" placeholder="Enter an existing meeting ID or create a new one" required>
 
@@ -39,6 +39,10 @@
     <button id="btn">Join Meeting</button>
 
     <button id="dashboardBtn">Dashboard</button>
+
+    <button id="loginbtnstuff" href="/auth/google" target="_blank"></button>
+    <button id="signoutlink" target=""> Sign Out </button>
+
 
     
     
@@ -83,6 +87,7 @@ else{
 
 
 function handler(event) {
+  console.error("CLICKED")
     newUsername = document.getElementById("username").value;
     if(newUsername == ""){
         return;
@@ -190,7 +195,7 @@ function handler(event) {
         duration: 1.0
       });
 
-      time.from('#desc', {
+      time.from('#logintxt', {
         opacity: 0.0,
         y: 30,
         ease: "expo.out",
